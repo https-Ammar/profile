@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>اتجاه القبلة — Qibla Finder</title>
   <style>
-    /* الأنماط الأساسية */
     :root{
       --bg:#0f1724; --card:#0b1220; --accent:#f59e0b; --muted:#94a3b8;
     }
@@ -16,15 +15,14 @@
       padding:24px;
     }
     .card{
-      width:100%; max-width:400px; /* تقليل عرض الكارد للتركيز على البوصلة */
+      width:100%; max-width:400px;
       background:linear-gradient(180deg,var(--card),#051027); border-radius:14px;
       padding:22px; box-shadow:0 10px 30px rgba(2,6,23,0.6);
-      text-align: center; /* توسيط المحتوى */
+      text-align: center;
     }
     header{display:flex; gap:12px; align-items:center; margin-bottom:16px; justify-content:center;}
     header h1{font-size:24px; margin:0; color:var(--accent);}
     
-    /* إخفاء عناصر التحكم الزائدة التي لم يعد لها استخدام تلقائي */
     .controls, .hint, .grid .info {
         display: none !important; 
     }
@@ -32,7 +30,6 @@
     .big{font-size:32px; font-weight:700; color:#fff}
     .muted{color:var(--muted); font-size:14px}
     
-    /* تنسيق البوصلة */
     .compass-wrap{display:flex; align-items:center; justify-content:center; height:300px; margin: 20px 0;}
     .compass{
       width:280px; height:280px; border-radius:50%; position:relative; display:grid; place-items:center;
@@ -42,20 +39,19 @@
     }
     .north-mark{position:absolute; top:10px; left:50%; transform:translateX(-50%); font-weight:700; color:var(--muted); font-size: 18px;}
     .needle{
-      width:8px; height:130px; /* تكبير السهم */
+      width:8px; height:130px;
       background:linear-gradient(180deg,var(--accent),#ffb84d);
       border-radius:8px; position:relative; transform-origin:50% 80%; transition:transform 400ms ease-out;
       box-shadow:0 6px 18px rgba(245,158,11,0.18), 0 1px 0 rgba(255,255,255,0.03) inset;
     }
     .needle::after{
       content:''; position:absolute; left:50%; transform:translateX(-50%); bottom:100%; width:0;height:0;
-      border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:20px solid #fff; /* رأس السهم للقبلة */
+      border-left:12px solid transparent; border-right:12px solid transparent; border-bottom:20px solid #fff;
       filter:drop-shadow(0 2px 3px rgba(0,0,0,0.4));
     }
     .center-dot{position:absolute; width:20px; height:20px; border-radius:50%; background:#fff; bottom:44%; transform:translateY(50%);}
-    .deg{font-weight:700; font-size:28px; color:var(--accent);} /* تلوين درجة القبلة */
+    .deg{font-weight:700; font-size:28px; color:var(--accent);}
     
-    /* معلومات الاتجاه أسفل البوصلة */
     .direction-info {
         margin-top: 10px;
         padding: 10px;
@@ -121,8 +117,8 @@
 
     <div class="direction-info">
         <div class="muted">اتجاه القبلة (من الشمال)</div>
-        <div id="bearing" class="deg">—°</div>
-        <div id="diff" class="muted"></div>
+        <div id="bearing-display" class="deg">—°</div>
+        <div id="diff-display" class="muted"></div>
     </div>
 
     <div style="margin-top:14px;">
@@ -134,8 +130,8 @@
     const kaabaLat = 21.422487 * Math.PI/180;
     const kaabaLon = 39.826206 * Math.PI/180;
 
-    const elBearing = document.getElementById('bearing');
-    const elDiff = document.getElementById('diff');
+    const elBearing = document.getElementById('bearing-display');
+    const elDiff = document.getElementById('diff-display');
     const elNeedle = document.getElementById('needle');
     const elStatus = document.getElementById('status');
 
@@ -166,12 +162,10 @@
       elBearing.textContent = `${b.toFixed(1)}°`;
       const showDiff = deviceHeading !== null;
       if(showDiff){
-        // إذا كان حساس الاتجاه فعالاً، يتم تدوير السهم بالفرق بين القبلة واتجاه الجهاز
         const diff = normalizeDeg(b - deviceHeading);
         elDiff.textContent = `القِبلة الآن: اِجعل ${diff.toFixed(1)}° في أعلى الشاشة`;
         rotateNeedle(diff);
       } else {
-        // إذا لم يكن حساس الاتجاه فعالاً، يتم تدوير السهم باتجاه القبلة من الشمال
         elDiff.textContent = `تفعيل حساس الاتجاه (البوصلة) للجهاز لتوجيه السهم`;
         rotateNeedle(b);
       }
@@ -181,11 +175,10 @@
       elNeedle.style.transform = `rotate(${angleDeg}deg)`;
     }
     
-    // 1. الوظيفة التلقائية للحصول على الموقع
     function autoGetLocation() {
         if(!navigator.geolocation){
             elStatus.textContent = 'خطأ: المتصفح لا يدعم تحديد الموقع';
-            autoActivateOrientation(); // محاولة تفعيل البوصلة حتى بدون موقع
+            autoActivateOrientation();
             return;
         }
         elStatus.textContent = 'جاري طلب الموقع التلقائي...';
@@ -194,10 +187,9 @@
             currentLon = pos.coords.longitude;
             elStatus.textContent = 'تم الحصول على الموقع بنجاح. الدقة: ' + (pos.coords.accuracy ? Math.round(pos.coords.accuracy) + 'م' : 'عالية');
             updateUI();
-            autoActivateOrientation(); // تفعيل البوصلة بعد الحصول على الموقع
+            autoActivateOrientation();
         }, err => {
             elStatus.textContent = `خطأ في الموقع: ${err.message}. جاري استخدام موقع افتراضي.`;
-            // استخدام موقع افتراضي عند الفشل
             currentLat = 30.0444; 
             currentLon = 31.2357;
             updateUI();
@@ -205,7 +197,6 @@
         }, {enableHighAccuracy:true, timeout:10000, maximumAge:60000});
     }
 
-    // 2. الوظيفة التلقائية لتفعيل حساس الاتجاه
     async function autoActivateOrientation() {
       elStatus.textContent += ' | جاري طلب صلاحية البوصلة...';
       if(typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
@@ -237,10 +228,7 @@
       updateUI();
     }
     
-    // تشغيل العمليات التلقائية عند تحميل الصفحة
     window.onload = autoGetLocation;
-    
-    // تم إزالة وظيفة initFallback لأنها أصبحت جزءاً من autoGetLocation في حال الفشل.
   </script>
 </body>
 </html>
