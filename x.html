@@ -24,7 +24,7 @@
     header h1{font-size:24px; margin:0; color:var(--accent);}
     
     .controls, .hint, .grid .info {
-        display: none !important; 
+        display: none; 
     }
     
     .big{font-size:32px; font-weight:700; color:#fff}
@@ -133,6 +133,7 @@
     const elInstruction = document.getElementById('instruction-display');
     const elNeedle = document.getElementById('needle');
     const elStatus = document.getElementById('status');
+    const btnOrient = document.getElementById('btn-orient');
 
     let currentLat = null, currentLon = null;
     let deviceHeading = null;
@@ -164,9 +165,13 @@
         const needleAngle = qiblaBearing - deviceHeading;
         rotateNeedle(needleAngle);
         elInstruction.textContent = `القِبلة الآن: اتبع الإبرة الحمراء.`;
+        btnOrient.textContent = '✅ البوصلة فعّالة';
+        btnOrient.disabled = true;
       } else {
         rotateNeedle(qiblaBearing);
-        elInstruction.textContent = `⚠️ لا يمكن الوصول لحساس الاتجاه. الإبرة تشير إلى اتجاه القبلة من الشمال (ثابت).`;
+        elInstruction.textContent = `⚠️ للإشارة التلقائية: اضغط 'تفعيل حساس الاتجاه' ووافق على طلب الوصول.`;
+        btnOrient.textContent = 'تفعيل حساس الاتجاه (الجوّال)';
+        btnOrient.disabled = false;
       }
     }
 
@@ -177,7 +182,6 @@
     function autoGetLocation() {
         if(!navigator.geolocation){
             elStatus.textContent = 'خطأ: المتصفح لا يدعم تحديد الموقع';
-            autoActivateOrientation();
             return;
         }
         elStatus.textContent = 'جاري طلب الموقع التلقائي...';
@@ -197,6 +201,7 @@
     }
 
     async function autoActivateOrientation() {
+      if(deviceHeading !== null) return;
       elStatus.textContent += ' | جاري طلب صلاحية البوصلة...';
       if(typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
         try{
@@ -228,5 +233,8 @@
       updateUI();
     }
     
+    btnOrient.addEventListener('click', autoActivateOrientation);
     window.onload = autoGetLocation;
   </script>
+</body>
+</html>
