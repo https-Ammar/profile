@@ -184,7 +184,7 @@ body {
 }
 .post-title {
   font-size: 1.4rem;
-  font-weight: 600;
+
   margin-bottom: var(--spacing-sm);
 }
 @media screen and (max-width: 768px) {
@@ -239,7 +239,7 @@ button.btn.btn-warning {
 }
 input.form-control {
   padding: var(--spacing-lg);
-  background: var(--color-card-bg);
+
   border: navajowhite;
   color: var(--color-text-primary);
   border-radius: var(--radius-lg);
@@ -259,10 +259,10 @@ input.form-control {
   background: var(--color-card-bg);
   border: none;
   border-radius: var(--radius-md);
-  padding: 25px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+
   color: var(--color-text-primary);
   text-decoration: none;
 }
@@ -276,6 +276,7 @@ input.form-control {
   align-items: center;
   justify-content: center;
   transition: 0.3s;
+  color: black;
 }
 .arrow-icon svg {
   width: 18px;
@@ -339,15 +340,9 @@ i.bi.bi-link-45deg.fs-5 {
 }
 footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 30px;
-  margin-top: 40px;
+
 }
-.framer-image-placeholder {
-  width: 110px;
-  height: 80px;
-  background-image: url('https://framerusercontent.com/images/z38e39gAyHsaN2OyKBVj5DH8oHY.png?scale-down-to=512&width=1600&height=1200');
-  background-size: cover;
-}
+
 .framer-text-content .card-text {
   color: #5c636a !important;
   font-size: 0.95rem;
@@ -360,4 +355,42 @@ footer {
 
 .btn.btn-sm a {
     color: white;
+}
+
+
+.box_icon {
+    width: 45px;
+    height: 45px;
+    background: #FFE29E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.box_icon i {
+    margin: 0 !important;
+    padding: 0;
+    font-size: x-large;
+    color: black;
+}
+
+
+.box_all {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.box_text p {
+    margin: 0;
+}
+
+
+
+
+a.social-link span.svg_link {
+    position: relative;
+    height: max-content;
+    margin: 0;
 }

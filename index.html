@@ -181,12 +181,25 @@
     </div>
 
     <div class="mb-4" data-aos="fade-up" data-aos-duration="1000">
-      <div class="section-title mb-3">
-        <span>Posts</span>
-        <span class="subtext">All <i class="bi bi-chevron-right"></i></span>
-      </div>
+
+      
+    <div class="section-title mb-4">
+          <span>Book a call
+</span>
+          <div class="d-flex gap-3 align-items-center">
+            <span style="font-size: 1rem; font-weight: normal;">Schedule</span>
+
+            <div class="btn btn-dark rounded-3"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar2-event" viewBox="0 0 16 16">
+  <path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"></path>
+  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"></path>
+  <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"></path>
+</svg></div>
+
+          </div>
+        </div>
+
       <section class="posts-section">
-        <div class="row g-4">
+        <div class="row ">
           <div class="col-6" data-aos="fade-up" data-aos-duration="1000">
             <div class="post-card">
               <div class="post-img" style="background-image: url('https://framerusercontent.com/images/ksGU1yJyrXzRaIdFdY0g2Mfgs.png?scale-down-to=1024');"></div>
@@ -217,7 +230,7 @@
           </div>
         </div>
       </section>
-      <p class="subtext mb-2 mt-4" data-aos="fade-up" data-aos-duration="1000">Enter your email to receive updates</p>
+      <p class="subtext " data-aos="fade-up" data-aos-duration="1000">Enter your email to receive updates</p>
       <div class="input-group row gx-2" data-aos="fade-up" data-aos-duration="1000">
         <div class="col-8">
           <input type="email" class="form-control" placeholder="Join newsletter">
@@ -228,34 +241,96 @@
       </div>
     </div>
 
-    <div class="d-flex flex-column gap-3 mb-4" data-aos="fade-up" data-aos-duration="1000">
-      <a href="#" class="social-link"><span><i class="bi bi-palette me-2"></i> Framer</span> <i class="bi bi-box-arrow-up-right"></i></a>
-      <a href="#" class="social-link"><span><i class="bi bi-twitter-x me-2"></i> Twitter/X</span> <i class="bi bi-box-arrow-up-right"></i></a>
-      <a href="#" class="social-link"><span><i class="bi bi-instagram me-2"></i> Instagram</span> <i class="bi bi-box-arrow-up-right"></i></a>
-      <a href="#" class="social-link"><span><i class="bi bi-pinterest me-2"></i> Pinterest</span> <i class="bi bi-box-arrow-up-right"></i></a>
+<div class="d-flex flex-column gap-3 mb-4" data-aos="fade-up" data-aos-duration="1000">
+
+  <!-- 1. Facebook -->
+  <a href="#" class="social-link">
+    <div class="box_all">
+      <div class="box_icon">
+        <i class="bi bi-facebook"></i>
+      </div>
+      <div class="box_text">
+        <p>Facebook</p>
+        <span>/username</span>
+      </div>
     </div>
+    <span class="svg_link"><i class="bi bi-link-45deg fs-5"></i></span>
+  </a>
+
+  <!-- 2. X (Twitter) -->
+  <a href="#" class="social-link">
+    <div class="box_all">
+      <div class="box_icon">
+        <i class="bi bi-twitter-x"></i>
+      </div>
+      <div class="box_text">
+        <p>Twitter / X</p>
+        <span>@username</span>
+      </div>
+    </div>
+    <span class="svg_link"><i class="bi bi-link-45deg fs-5"></i></span>
+  </a>
+
+  <!-- 3. Instagram -->
+  <a href="#" class="social-link">
+    <div class="box_all">
+      <div class="box_icon">
+        <i class="bi bi-instagram"></i>
+      </div>
+      <div class="box_text">
+        <p>Instagram</p>
+        <span>@username</span>
+      </div>
+    </div>
+    <span class="svg_link"><i class="bi bi-link-45deg fs-5"></i></span>
+  </a>
+
+  <!-- 4. Email -->
+  <a href="mailto:email@example.com" class="social-link">
+    <div class="box_all">
+      <div class="box_icon">
+        <i class="bi bi-envelope"></i>
+      </div>
+      <div class="box_text">
+        <p>Email</p>
+        <span>email@example.com</span>
+      </div>
+    </div>
+    <span class="svg_link"><i class="bi bi-link-45deg fs-5"></i></span>
+  </a>
+
+  <!-- 5. Phone -->
+  <a href="tel:+201234567890" class="social-link">
+    <div class="box_all">
+      <div class="box_icon">
+        <i class="bi bi-telephone"></i>
+      </div>
+      <div class="box_text">
+        <p>Phone</p>
+        <span>+20 123 456 7890</span>
+      </div>
+    </div>
+    <span class="svg_link"><i class="bi bi-link-45deg fs-5"></i></span>
+  </a>
+
+  <!-- 6. WhatsApp -->
+  <a href="https://wa.me/201234567890" class="social-link">
+    <div class="box_all">
+      <div class="box_icon">
+        <i class="bi bi-whatsapp"></i>
+      </div>
+      <div class="box_text">
+        <p>WhatsApp</p>
+        <span>+20 123 456 7890</span>
+      </div>
+    </div>
+    <span class="svg_link"><i class="bi bi-link-45deg fs-5"></i></span>
+  </a>
+
+</div>
 
     <footer data-aos="fade-up" data-aos-duration="1000">
-      <div class="d-flex justify-content-between align-items-start flex-wrap">
-        <div class="d-flex align-items-center gap-3">
-          <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=200" class="rounded" width="50" height="50" alt="Ethan Miller Footer Avatar">
-          <div>
-            <h6 class="fw-bold mb-1">Ethan Miller</h6>
-            <p class="smalltext mb-1">Generative Artist & Indie Creator</p>
-            <p class="smalltext mb-0">hello@tmpl.digital</p>
-          </div>
-        </div>
-        <div class="d-flex gap-4 mt-3 mt-md-0">
-          <div>
-            <h6 class="fw-bold mb-1">Templates</h6>
-            <p class="smalltext mb-0">Blog</p>
-          </div>
-          <div>
-            <h6 class="fw-bold mb-1">Social</h6>
-            <p class="smalltext mb-0">X/Twitter<br>Instagram</p>
-          </div>
-        </div>
-      </div>
+ 
       <p class="text-center smalltext mt-4 mb-0">© 2025 LinksPage Template · Built in Framer · MADE BY tmpl</p>
     </footer>
   </div>
