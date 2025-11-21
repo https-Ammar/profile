@@ -395,6 +395,23 @@ a.social-link span.svg_link {
     margin: 0;
 }
 
+
+
+i.bi.bi-patch-check-fill.text-primary {
+    width: 20px;
+    height: 20px;
+    font-size: x-large;
+    fill: white !important;
+}
+
+h1.fw-bold.mb-1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+        width: inherit;
+}
+
+
 @media screen and (max-width: 768px) {
 .section-title span {
     font-size: larger;
