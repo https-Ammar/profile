@@ -394,3 +394,21 @@ a.social-link span.svg_link {
     height: max-content;
     margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+.section-title span {
+    font-size: larger;
+}
+
+h5.mb-1.fw-bold {
+    font-size: small !important;
+}
+
+.bg-blue {height: auto !important;}
+
+.card.card-light.mb-3.p-3.d-flex.flex-row.justify-content-between.align-items-center.aos-init.aos-animate {
+    padding: 15px !important;
+}
+
+  
+}
